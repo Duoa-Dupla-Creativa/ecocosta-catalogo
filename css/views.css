@@ -139,6 +139,10 @@
   transform: translateX(4px);
 }
 
+.hero-cta-btn--down:hover svg {
+  transform: translateY(4px);
+}
+
 .hero-cta-btn:active {
   transform: translateY(0) scale(0.98);
 }
@@ -360,6 +364,7 @@
 }
 
 .intro-content {
+  scroll-margin-top: clamp(64px, 18vh, 168px);
   max-width: 960px;
   margin: 0 auto;
   padding: clamp(2rem, 4vw, 3.8rem) clamp(1.2rem, 4vw, 2.5rem) clamp(3.5rem, 6vw, 5.5rem);
@@ -368,6 +373,12 @@
   flex-direction: column;
   align-items: center;
   gap: clamp(1.6rem, 3.2vw, 2.5rem);
+}
+
+@media (max-width: 768px) {
+  .intro-content {
+    scroll-margin-top: 28px;
+  }
 }
 
 .intro-logo {

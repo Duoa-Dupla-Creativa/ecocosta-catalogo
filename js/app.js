@@ -63,6 +63,17 @@
     });
   });
 
+  var heroMoreBtn = $("#hero-btn-ver-mas");
+  if (heroMoreBtn) {
+    heroMoreBtn.addEventListener("click", function (e) {
+      var targetEl = document.getElementById("inicio-intro-content");
+      if (!targetEl) return;
+      e.preventDefault();
+      targetEl.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      targetEl.focus({ preventScroll: true });
+    });
+  }
+
   document.addEventListener("click", function (e) {
     var go = e.target.closest("[data-go]");
     if (go) {
