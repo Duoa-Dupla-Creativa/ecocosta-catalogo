@@ -1,0 +1,108 @@
+/* ==========================================================================
+   ECOCOSTA — Navegación dual y carrito flotante (PLAN_1 §3)
+   ========================================================================== */
+[hidden] { display: none !important; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed; z-index: 1000;
+  display: flex; align-items: center;
+  background: var(--color-bg-main);
+  border: var(--border-subtle);
+  box-shadow: var(--shadow-pill);
+  border-radius: var(--radius-pill);
+}
+.nav-btn {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  transition: background-color .25s ease, transform .25s var(--ease-smooth), box-shadow .25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-btn svg { width: 20px; height: 20px; stroke: var(--color-primary); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.nav-btn:hover { background: var(--color-surface-muted); }
+.nav-btn:active { transform: scale(.96); }
+.nav-btn[aria-current="page"] { background: var(--color-surface-card); box-shadow: 0 2px 10px -2px rgba(82,98,27,.18); }
+.nav-btn[disabled], .nav-btn[aria-busy="true"] { opacity: .55; cursor: progress; }
+
+/* Desktop (>= 768px): píldora flotante superior */
+@media (min-width: 768px) {
+  .navbar {
+    top: 1.5rem; left: 50%; transform: translateX(-50%);
+    gap: .25rem; padding: .4rem;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    background: rgba(252, 234, 223, .86);
+  }
+  .nav-btn { flex-direction: row; gap: .55rem; padding: .7rem 1.2rem; }
+  .nav-btn .text-nav-label { font-size: .9rem; }
+}
+
+/* Mobile (< 768px): barra inferior estilo app flotante */
+@media (max-width: 767.98px) {
+  .navbar {
+    bottom: 1rem;
+    left: 1rem; right: 1rem; margin: auto; max-width: 400px;
+    justify-content: space-around;
+    padding: .4rem .5rem !important;
+  }
+  .nav-btn { flex: 1; flex-direction: column; gap: 3px; padding: .5rem .4rem; }
+  .nav-btn .text-nav-label { font-size: .72rem; }
+}
+
+/* ---------- Globo del carrito ---------- */
+.cart-fab {
+  position: fixed; z-index: 1001;
+  display: grid; place-items: center;
+  border: 0; cursor: pointer; border-radius: 50%;
+  background: var(--color-accent-active); color: var(--color-accent-text);
+  box-shadow: var(--shadow-bubble);
+  transition: background-color .25s ease, transform .25s var(--ease-smooth);
+  -webkit-tap-highlight-color: transparent;
+}
+.cart-fab svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.cart-fab:hover { background: var(--color-accent-hover); }
+.cart-fab:hover svg { stroke: var(--color-primary-dark); }
+.cart-fab:hover .cart-badge { background: var(--color-primary-dark); color: #fff; }
+.cart-badge {
+  position: absolute; top: -4px; right: -4px;
+  min-width: 22px; height: 22px; padding: 0 6px;
+  display: grid; place-items: center;
+  background: var(--color-primary); color: #fff;
+  font-size: .75rem; font-weight: var(--font-weight-regular); line-height: 1;
+  border-radius: var(--radius-pill); border: 2px solid var(--color-bg-main);
+}
+
+@media (min-width: 768px) {
+  .cart-fab {
+    width: 50px; height: 50px; top: calc(1.5rem + 4px);
+    left: calc(50% + var(--nav-w) / 2 + 14px);
+  }
+}
+@media (max-width: 767.98px) {
+  .cart-fab {
+    width: 56px; height: 56px;
+    bottom: calc(1rem + 80px); right: 1.25rem;
+  }
+  .cart-fab svg { width: 26px; height: 26px; }
+}
+
+/* ---------- Toast ---------- */
+.toast-region {
+  position: fixed; z-index: 2000; left: 0; right: 0; display: flex; justify-content: center;
+  pointer-events: none; padding: 0 1rem;
+}
+@media (min-width: 768px) { .toast-region { top: 5.6rem; } }
+@media (max-width: 767.98px) { .toast-region { top: calc(.9rem + env(safe-area-inset-top, 0px)); } }
+.toast {
+  display: inline-flex; align-items: center; gap: .65rem;
+  background: var(--color-primary-dark); color: #fff;
+  padding: .75rem 1.2rem; border-radius: var(--radius-pill);
+  font-size: .9rem; font-weight: var(--font-weight-semibold);
+  box-shadow: 0 12px 30px -8px rgba(63, 76, 20, .5);
+  animation: toast-in .45s var(--ease-elastic) both;
+}
+.toast svg { width: 18px; height: 18px; stroke: var(--color-accent-hover); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.toast.is-leaving { animation: toast-out .3s ease forwards; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(14px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(8px); } }

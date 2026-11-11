@@ -1,0 +1,48 @@
+/* ==========================================================================
+   ECOCOSTA — Escenario de exportación PDF (PLAN_1 §7)
+   Contenedor off-screen #pdf-export-stage con ancho forzado a 420px
+   (layout móvil siempre, sin importar el dispositivo).
+
+   html2pdf.js renderiza cada hoja dentro de su propio contenedor del ancho
+   exacto de la página Carta (816px @96dpi). Para conservar la maqueta móvil
+   de 420px, todas las medidas se expresan con --k: 1 en el escenario y
+   ~1.943 dentro de .html2pdf__container (escala uniforme -> hoja 8.5x11in).
+   ========================================================================== */
+#pdf-export-stage {
+  position: fixed; left: -10000px; top: 0; width: 420px;
+  background: var(--color-bg-main); pointer-events: none;
+  --k: 1;
+}
+.html2pdf__container { --k: 1.942857; }
+
+.pdf-page {
+  width: calc(420px * var(--k)); height: calc(543px * var(--k));
+  padding: calc(22px * var(--k)) calc(22px * var(--k)) calc(14px * var(--k));
+  background: var(--color-bg-main); display: flex; flex-direction: column; gap: calc(12px * var(--k));
+  overflow: hidden;
+}
+.pdf-cards { flex: 1; display: flex; flex-direction: column; gap: calc(12px * var(--k)); min-height: 0; }
+.pdf-card {
+  flex: 1; min-height: 0; display: grid; grid-template-rows: 1fr auto;
+  background: #fff; border-radius: calc(20px * var(--k)); border: 1px solid rgba(82, 98, 27, 0.12); overflow: hidden;
+  page-break-inside: avoid; break-inside: avoid;
+}
+.pdf-card-media {
+  position: relative; min-height: 0; overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #fff 38%, rgba(245,222,207,.6) 100%);
+}
+.pdf-card-media--missing {
+  display: flex; align-items: center; justify-content: center;
+}
+.pdf-card-media img {
+  position: absolute; inset: calc(12px * var(--k));
+  width: calc(100% - 24px * var(--k)); height: calc(100% - 24px * var(--k)); object-fit: contain;
+}
+.pdf-card-body { padding: calc(4px * var(--k)) calc(18px * var(--k)) calc(16px * var(--k)); display: flex; flex-direction: column; gap: calc(3px * var(--k)); }
+.pdf-cat { font-size: calc(10px * var(--k)); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-primary); }
+.pdf-card-body .text-title-product { font-size: calc(17px * var(--k)); }
+.pdf-card-body .text-specs { font-size: calc(13px * var(--k)); }
+.pdf-foot {
+  display: flex; justify-content: space-between; font-size: calc(10px * var(--k)); font-weight: 600;
+  color: var(--color-primary); height: calc(14px * var(--k)); line-height: calc(14px * var(--k));
+}

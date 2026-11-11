@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ecocosta | Catálogo de empaques ecológicos</title>
+  <meta name="description"
+    content="Catálogo interactivo de Ecocosta: empaques y soluciones ecológicas para gastronomía y negocios. Cotiza por WhatsApp.">
+  <meta name="theme-color" content="#FCEADF">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2352621B'/%3E%3Cpath d='M16 25v-9M16 17c0-5 3.5-8 8-8 0 5-3.5 8-8 8ZM16 19c0-4-2.6-6-6.500-6 0 4 2.600 6 6.500 6Z' fill='none' stroke='%23FCEADF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css?v=44">
+  <link rel="stylesheet" href="css/base.css?v=44">
+  <link rel="stylesheet" href="css/layout.css?v=44">
+  <link rel="stylesheet" href="css/components.css?v=49">
+  <link rel="stylesheet" href="css/views.css?v=56">
+  <link rel="stylesheet" href="css/pdf.css?v=44">
+</head>
+
+<body class="page-inicio">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- ============ Navegación dual (desktop: píldora superior / mobile: barra inferior) ============ -->
+  <nav class="navbar" id="navbar" aria-label="Navegación principal">
+    <a class="nav-btn" href="index.html" data-view="inicio" aria-current="page">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 10.5 12 3l9 7.5" />
+        <path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5" />
+      </svg>
+      <span class="text-nav-label">Inicio</span>
+    </a>
+    <a class="nav-btn" href="productos.html" data-view="productos">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z" />
+        <path d="M3.5 7.5 12 12l8.5-4.5" />
+        <path d="M12 12v9" />
+      </svg>
+      <span class="text-nav-label">Productos</span>
+    </a>
+    <button class="nav-btn" type="button" id="btn-pdf">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" />
+        <path d="M14 3v5h5" />
+        <path d="M12 11.5v5" />
+        <path d="m9.8 14.5 2.2 2.2 2.2-2.2" />
+      </svg>
+      <span class="text-nav-label">Descargar PDF</span>
+    </button>
+  </nav>
+
+  <button class="cart-fab" id="cart-fab" type="button" aria-label="Abrir lista de cotización" aria-haspopup="dialog"
+    hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 4h2.2l2 11.2a1.5 1.5 0 0 0 1.5 1.3h8.1a1.5 1.5 0 0 0 1.5-1.2L20 8H6.2" />
+      <circle cx="9.5" cy="20" r="1.3" />
+      <circle cx="17" cy="20" r="1.3" />
+    </svg>
+    <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+  </button>
+
+  <div class="toast-region" id="toast-region" role="status" aria-live="polite"></div>
+
+  <!-- ============ Contenido ============ -->
+  <main id="main" tabindex="-1">
+
+    <!-- ---------- Vista INICIO: Hero Cover 100vh ---------- -->
+    <section class="hero-cover" id="view-inicio" aria-label="Catálogo de productos Ecocosta">
+      <div class="hero-stage">
+
+        <!-- Textos principales ("Catálogo de productos") y CTA -->
+        <div class="hero-typography" id="hero-typography">
+          <h1 class="hero-title-top">Catálogo</h1>
+          <div class="hero-badge-wrap">
+            <span class="hero-badge">de</span>
+          </div>
+          <div class="hero-title-bottom">productos</div>
+          <div class="hero-cta-wrap">
+            <a href="productos.html" class="btn-base hero-cta-btn" id="hero-btn-productos" data-go="productos">
+              <span>Ver productos</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 1. Bowl de arroz (arriba izq, pisa sutilmente 'C') -->
+        <div class="float-item item-bowl-arroz parallax-item" data-speed="0.22" data-dir="down">
+          <img src="assets/img/inicio/Bowl de arroz.webp" alt="Bowl de arroz con vegetales" width="918" height="821">
+        </div>
+
+        <!-- 2. Sticker Caja (arriba centro-der) -->
+        <div class="float-item item-sticker-caja parallax-item" data-speed="0.20" data-dir="down">
+          <img src="assets/img/inicio/Sticker caja.webp" alt="Sticker caja de reciclaje" width="624" height="582">
+        </div>
+
+        <!-- 3. Caja con tapa de cartón (arriba der, pisa sutilmente 'o') -->
+        <div class="float-item item-caja-tapa parallax-item" data-speed="0.22" data-dir="down">
+          <img src="assets/img/inicio/Caja con tapa de carton.webp" alt="Caja con tapa de cartón compostable"
+            width="715" height="835">
+        </div>
+
+        <!-- 4. Sticker servilletas / cajas dobladas (izq medio, pisa sutilmente 'p') -->
+        <div class="float-item item-sticker-servilletas parallax-item" data-speed="0.14" data-dir="right">
+          <img src="assets/img/inicio/Sticker_Cajas.webp" alt="Sticker empaques plegados" width="654" height="394">
+        </div>
+
+        <!-- 5. Vaso con café (abajo izq, pisa sutilmente 'p' y 'r') -->
+        <div class="float-item item-vaso-cafe parallax-item" data-speed="0.22" data-dir="up">
+          <img src="assets/img/inicio/Vaso con cafe.webp" alt="Vaso de café para llevar" width="692" height="729">
+        </div>
+
+        <!-- 6. Sticker Maíz (abajo centro) -->
+        <div class="float-item item-sticker-maiz parallax-item" data-speed="0.18" data-dir="up">
+          <img src="assets/img/inicio/Sticker_Maiz.webp" alt="Sticker mazorca de maíz ecológico" width="378"
+            height="484">
+        </div>
+
+        <!-- 7. Bowl con ensalada (abajo der, pisa sutilmente 'ctos') -->
+        <div class="float-item item-bowl-ensalada parallax-item" data-speed="0.22" data-dir="up">
+          <img src="assets/img/inicio/Bowl con ensalada.webp" alt="Bowl con ensalada de frutas frescas" width="892"
+            height="811">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- Sección Presentación y Propuesta de Valor (Justo después del banner, sin gap) ---------- -->
+    <section class="hero-intro-section" id="inicio-intro" aria-label="Soluciones de empaques ecológicos">
+      <!-- Foto de empaques en brazos con recorte ondulado orgánico -->
+      <div class="intro-photo-wrap">
+        <img src="assets/img/inicio/Productos en brazos.webp" alt="Empaques ecológicos en manos Ecocosta"
+          class="intro-photo" width="2550" height="1453" loading="lazy">
+        <div class="intro-wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path
+              d="M 0,65 C 240,20 420,30 650,75 C 880,120 1080,105 1250,65 C 1350,45 1410,55 1440,60 L 1440,120 L 0,120 Z"
+              fill="#FCEADF" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido informativo oficial Ecocosta -->
+      <div class="intro-content">
+        <img src="assets/img/inicio/logo-ecocosta-horizontal.webp" alt="Comercializadora Ecocosta S.A.S."
+          class="intro-logo" width="592" height="154">
+
+        <div class="intro-texts">
+          <p class="intro-lead">
+            Conectamos a las empresas con <strong>soluciones de empaques</strong> que responden a las necesidades de
+            <strong>sus productos, operaciones y clientes</strong>.
+          </p>
+          <p class="intro-sublead">
+            Comercializamos y distribuimos <strong>empaques y productos</strong> para distintos sectores del mercado.
+          </p>
+        </div>
+
+        <h2 class="intro-heading">Un gran portafolio pensado para:</h2>
+
+        <!-- 4 Sectores: Manchas 1-4 + Iconos en orden alfanumérico -->
+        <div class="intro-sectors-grid" role="list">
+          <div class="sector-card" role="listitem">
+            <img src="assets/svg/inicio/Mancha 1.svg" alt="" class="sector-mancha" aria-hidden="true">
+            <img src="assets/svg/inicio/Alimentos.svg?v=28" alt="Sector Alimentos" class="sector-icon">
+          </div>
+          <div class="sector-card" role="listitem">
+            <img src="assets/svg/inicio/Mancha 2.svg" alt="" class="sector-mancha" aria-hidden="true">
+            <img src="assets/svg/inicio/Bebidas.svg?v=28" alt="Sector Bebidas" class="sector-icon">
+          </div>
+          <div class="sector-card" role="listitem">
+            <img src="assets/svg/inicio/Mancha 3.svg" alt="" class="sector-mancha" aria-hidden="true">
+            <img src="assets/svg/inicio/Domicilio.svg?v=28" alt="Sector Domicilios" class="sector-icon">
+          </div>
+          <div class="sector-card" role="listitem">
+            <img src="assets/svg/inicio/Mancha 4.svg" alt="" class="sector-mancha" aria-hidden="true">
+            <img src="assets/svg/inicio/Comercios.svg?v=28" alt="Sector Comercios" class="sector-icon">
+          </div>
+        </div>
+
+        <!-- Texto de cierre: desktop 2 líneas con Circulo stroke.svg / mobile 4 líneas con Circulo stroke_Mobile.svg -->
+        <div class="intro-callout-wrap">
+          <picture class="intro-stroke-picture">
+            <source media="(max-width: 767.98px)" srcset="assets/svg/inicio/Circulo%20stroke_Mobile.svg">
+            <img src="assets/svg/inicio/Circulo stroke.svg" alt="" class="intro-stroke-svg" aria-hidden="true">
+          </picture>
+          <p class="intro-callout-text">
+            <span>Te acompañamos en la<br class="intro-callout-br-mobile"> elección de productos que</span>
+            <span>aporten funcionalidad y<br class="intro-callout-br-mobile"> practicidad a tu negocio.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Sección Propuesta de Valor (Fondo verde continuo, sin gap) ---------- -->
+    <section class="hero-propuesta-section" id="inicio-propuesta" aria-label="Nuestra propuesta de valor">
+      <div class="container propuesta-container">
+
+        <!-- Columna de textos -->
+        <div class="propuesta-col-text">
+          <h2 class="propuesta-title">
+            <span>Nuestra</span>
+            <span>propuesta</span>
+            <span>de valor</span>
+          </h2>
+          <p class="propuesta-subtitle">Más que empaques, ofrecemos<br>soluciones para tu negocio.</p>
+
+          <div class="propuesta-body">
+            <p>
+              Sabemos que cada negocio es diferente. Por eso, ofrecemos <strong>soluciones de empaque</strong> que se
+              adaptan a cada producto, cuidando su <strong>presentación, protección y funcionalidad</strong>.
+            </p>
+            <p>
+              Contamos con <strong>un portafolio diverso</strong> y te acompañamos para encontrar las opciones que mejor
+              se ajusten a tu negocio.
+            </p>
+          </div>
+
+          <!-- Pastilla de cierre con Mancha 6 + Flecha -->
+          <div class="propuesta-callout-wrap">
+            <div class="propuesta-badge">
+              <img src="assets/svg/inicio/Mancha 6.svg" alt="" class="propuesta-badge-bg" aria-hidden="true">
+              <div class="propuesta-badge-text">
+                <span>¡Estamos listos para</span>
+                <span>surtir tu negocio!</span>
+              </div>
+            </div>
+            <img src="assets/svg/inicio/Flecha.svg" alt="" class="propuesta-arrow" aria-hidden="true">
+          </div>
+        </div>
+
+        <!-- Columna de imagen (Mano con bowls + Mancha naranja detrás) -->
+        <div class="propuesta-col-media">
+          <div class="propuesta-media-stage">
+            <img src="assets/svg/inicio/Mancha-naranja.svg" alt="" class="propuesta-mancha-bg" aria-hidden="true">
+            <img src="assets/img/inicio/mano-bowls.webp" alt="Mano sosteniendo bowls ecológicos compostables"
+              class="propuesta-hand-img" width="1200" height="1187" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- Sección Personalizamos tus empaques (Justo después del fondo verde, sin gap) ---------- -->
+    <section class="personalizacion-section" id="inicio-personalizacion" aria-label="Personalizamos tus empaques">
+      <div class="container personalizacion-container">
+
+        <!-- Cabecera con Mancha 5 + Título -->
+        <div class="personalizacion-header-wrap">
+          <img src="assets/svg/inicio/Mancha 5.svg" alt="" class="personalizacion-mancha-header" aria-hidden="true">
+          <div class="personalizacion-header-text">
+            <p class="personalizacion-eyebrow">¡Haz que tu marca destaque!</p>
+            <h2 class="personalizacion-title">Personalizamos<br>tus empaques</h2>
+          </div>
+        </div>
+
+        <!-- Párrafo explicativo -->
+        <div class="personalizacion-body-wrap">
+          <p class="personalizacion-body-text">
+            En ECOCOSTA personalizamos <strong>vasos, contenedores, bolsas y más</strong> para que cada empaque lleve la
+            identidad de tu negocio. <strong>Dale personalidad a tus empaques</strong> y haz que tu marca se reconozca
+            en cada detalle.
+          </p>
+
+          <!-- Pastilla interactiva con Mancha 7 -->
+          <div class="personalizacion-pill-wrap">
+            <a href="https://wa.me/573000000000?text=Hola,%20quisiera%20preguntar%20por%20sus%20opciones%20de%20personalizaci%C3%B3n"
+              target="_blank" rel="noopener noreferrer" class="personalizacion-pill-link"
+              aria-label="Pregunta por nuestras opciones de personalización">
+              <img src="assets/svg/inicio/Mancha 7.svg" alt="" class="personalizacion-pill-bg" aria-hidden="true">
+              <span class="personalizacion-pill-text">Pregunta por nuestras opciones de personalización</span>
+            </a>
+          </div>
+
+          <!-- Slogan con Lineas parrafo -->
+          <div class="personalizacion-slogan-wrap">
+            <p class="personalizacion-slogan">
+              <span class="slogan-txt">Empaques que conectan marcas con <span class="slogan-word-personas">personas.<img
+                    src="assets/svg/inicio/Lineas parrafo.svg" alt="" class="slogan-lines-mobile"
+                    aria-hidden="true"></span></span>
+              <img src="assets/svg/inicio/Lineas parrafo.svg" alt="" class="slogan-lines-desktop" aria-hidden="true">
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Escenario de los 3 vasos y mancha verde continua hasta el final de la landing -->
+      <div class="personalizacion-stage-wrap">
+        <!-- Mancha verde de fondo con onda superior orgánica que se extiende hasta el fondo -->
+        <div class="personalizacion-wave-bg" aria-hidden="true">
+          <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
+            <path
+              d="M0,110 C220,110 380,240 620,240 C840,240 1000,125 1220,125 C1320,125 1390,150 1440,175 L1440,260 L0,260 Z"
+              fill="#52631C" />
+          </svg>
+          <div class="personalizacion-wave-fill"></div>
+        </div>
+
+        <!-- Contenedor relativo de los 3 vasos (orden: Vaso dibujo_3, Vaso dibujo_1, Vaso dibujo_2) -->
+        <div class="personalizacion-cups-stage">
+          <!-- Vaso 3: Yoggi (Izquierda) -->
+          <div class="cup-item cup-item-left parallax-cup" data-speed="65" data-dir="down">
+            <img src="assets/img/inicio/Vaso dibujo_3.png" alt="Vaso Yoggi personalizado" class="cup-img"
+              loading="lazy">
+          </div>
+
+          <!-- Vaso 1: Bistró del Río (Centro, prominente) -->
+          <div class="cup-item cup-item-center parallax-cup" data-speed="95" data-dir="up">
+            <img src="assets/img/inicio/Vaso dibujo_1.png" alt="Vaso Bistró del Río personalizado" class="cup-img"
+              loading="lazy">
+          </div>
+
+          <!-- Vaso 2: Zuana (Derecha) -->
+          <div class="cup-item cup-item-right parallax-cup" data-speed="70" data-dir="down">
+            <img src="assets/img/inicio/Vaso dibujo_2.png" alt="Vaso Zuana personalizado" class="cup-img"
+              loading="lazy">
+          </div>
+        </div>
+
+        <!-- Botón CTA final idéntico al Hero -->
+        <div class="personalizacion-footer-cta-wrap">
+          <a href="productos.html" class="btn-base hero-cta-btn" id="footer-btn-productos" data-go="productos">
+            <span>Ver productos</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Modal de decisión (primer clic en "Cotizar") ============ -->
+  <dialog class="modal" id="decision-modal" aria-labelledby="decision-title">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" data-close aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div class="modal-product">
+        <img id="decision-img" src="" alt="">
+        <div>
+          <p class="text-title-product" id="decision-name"></p>
+          <p class="text-specs" id="decision-specs"></p>
+        </div>
+      </div>
+      <h2 class="text-subtitle" id="decision-title">¿Cómo deseas cotizar tus empaques?</h2>
+      <div class="modal-actions">
+        <button class="btn-base btn-primary btn-pill" type="button" id="decision-now">Cotizar este producto</button>
+        <button class="btn-base btn-secondary btn-pill" type="button" id="decision-later">Seguir viendo</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============ Pop-up / Modal Ficha Técnica de Producto ============ -->
+  <dialog class="modal modal-product-detail" id="product-detail-modal" aria-labelledby="detail-title">
+    <button class="modal-close" type="button" data-close aria-label="Cerrar ficha">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <div class="modal-inner detail-inner">
+      <div class="detail-grid">
+        <div class="detail-media-wrap">
+          <div class="detail-media" id="detail-media"></div>
+        </div>
+
+        <div class="detail-content">
+          <div class="detail-head">
+            <span class="detail-cat-badge" id="detail-category"></span>
+            <h2 class="text-title-section detail-title" id="detail-title"></h2>
+            <div class="detail-badges" id="detail-badges"></div>
+          </div>
+
+          <p class="text-body detail-desc" id="detail-description"></p>
+
+          <div class="detail-table-wrap" id="detail-table-container"></div>
+        </div>
+
+        <div class="detail-actions">
+          <button class="btn-base btn-primary btn-pill" type="button" id="detail-quote-wa">
+            <svg class="icon-wa" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28" />
+            </svg>
+            <span>Cotizar en WhatsApp</span>
+          </button>
+          <button class="btn-base btn-secondary btn-pill" type="button" id="detail-add-list">
+            <span>Agregar a mi lista</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============ Panel del carrito ============ -->
+  <dialog class="cart-panel" id="cart-panel" aria-labelledby="cart-title">
+    <div class="cart-head">
+      <div>
+        <h2 class="text-title-section" id="cart-title">Tu lista</h2>
+        <p class="text-specs" id="cart-sub"></p>
+      </div>
+      <button class="modal-close" type="button" data-close aria-label="Cerrar lista">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+    </div>
+    <ul class="cart-list" id="cart-list"></ul>
+    <div class="cart-foot">
+      <a class="btn-base btn-primary btn-pill" id="cart-send" href="#" target="_blank" rel="noopener">
+        <svg class="icon-wa" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28" />
+        </svg>
+        Cotizar en WhatsApp
+      </a>
+      <button class="cart-clear" type="button" id="cart-clear">Vaciar lista</button>
+    </div>
+  </dialog>
+
+  <!-- ============ Progreso de PDF + escenario off-screen ============ -->
+  <div class="pdf-progress" id="pdf-progress" hidden role="alert" aria-live="assertive">
+    <div class="pdf-progress-box">
+      <p class="text-subtitle" id="pdf-progress-text">Preparando catálogo…</p>
+      <div class="pdf-bar"><span id="pdf-bar-fill"></span></div>
+      <p class="text-specs">Esto puede tardar unos segundos.</p>
+    </div>
+  </div>
+  <div id="pdf-export-stage" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+  <script src="js/config.js?v=44" defer></script>
+  <script src="js/data.js?v=63" defer></script>
+  <script src="js/icons.js?v=44" defer></script>
+  <script src="js/cart.js?v=44" defer></script>
+  <script src="js/catalog.js?v=61" defer></script>
+  <script src="js/pdf.js?v=44" defer></script>
+  <script src="js/app.js?v=44" defer></script>
+</body>
+
+</html>
